@@ -72,26 +72,25 @@
             <div class="case lock"></div>
         </div>
         <div id="misc">
-            <div id="newBtn">Nouvelle partie</div>
+            <div id="compte">
+                <div id="c-rouge" class="case compteur">0</div>
+                +
+                <div id="c-jaune" class="case compteur">0</div>
+                +
+                <div id="c-vert" class="case compteur">0</div>
+                +
+                <div id="c-bleu" class="case compteur">0</div>
+                -
+                <div id="c-malus" class="case">0</div>
+                =
+                <div id="total" class="case">0</div>
+            </div>
             <div id="malus">
                 <div id="passe" class="case appuyable"></div>
                 <div id="passe" class="case appuyable"></div>
                 <div id="passe" class="case appuyable"></div>
                 <div id="passe" class="case appuyable"></div>
             </div>
-        </div>
-        <div id="compte">
-            <div id="c-rouge" class="case compteur">0</div>
-            +
-            <div id="c-jaune" class="case compteur">0</div>
-            +
-            <div id="c-vert" class="case compteur">0</div>
-            +
-            <div id="c-bleu" class="case compteur">0</div>
-            -
-            <div id="c-malus" class="case">0</div>
-            =
-            <div id="total" class="case">0</div>
         </div>
         <script>
             window.addEventListener("load",function() {
@@ -180,19 +179,20 @@
                     lock.classList.remove('appuyable');
                 }
             }
+            
             screen.orientation.lock('landscape');
 
-            let newBtn = document.getElementById('newBtn');
-            newBtn.addEventListener('click', () => {
-                let resetComptes = document.querySelectorAll('#compte .case');
-                let allActive = document.querySelectorAll('.active');
-                allActive.forEach(oneActive => {
-                    oneActive.classList.remove('active');
-                });
-                resetComptes.forEach(compteur => {
-                    compteur.textContent = '0';
-                })
-            });
+            // let newBtn = document.getElementById('newBtn');
+            // newBtn.addEventListener('click', () => {
+            //     let resetComptes = document.querySelectorAll('#compte .case');
+            //     let allActive = document.querySelectorAll('.active');
+            //     allActive.forEach(oneActive => {
+            //         oneActive.classList.remove('active');
+            //     });
+            //     resetComptes.forEach(compteur => {
+            //         compteur.textContent = '0';
+            //     })
+            // });
 
 
         </script>
@@ -204,6 +204,19 @@
     
     * { 
         font-family: 'Poppins', sans-serif;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+        html {
+            transform: scale(2);
+            transform-origin: left top;
+            width: 100vh;
+            height: 100vw;
+            overflow-x: hidden;
+            position: absolute;
+            top: 0%;
+            left: -100%;
+        }
     }
 
     :root {
@@ -318,14 +331,13 @@
 
     #compte {
         display: flex;
-        width: 90vw;
+        width: 60vw;
         height: max-content;
         align-items: center;
         justify-content: space-around;
         text-align: center;
-        padding-bottom: 1vw;
-        gap: 0.8vw;
         font-weight: 800;
+        gap:1vw;
     }
 
     #misc   {
