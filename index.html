@@ -92,6 +92,9 @@
                 <div id="passe" class="case appuyable"></div>
             </div>
         </div>
+        <video autoplay loop controls="false">
+            <source src="blank.mp4" type="video/mp4">
+        </video>
         <script>
             window.addEventListener("load",function() {
                 setTimeout(function(){
@@ -179,8 +182,6 @@
                     lock.classList.remove('appuyable');
                 }
             }
-            
-            screen.orientation.lock('landscape');
 
             // let newBtn = document.getElementById('newBtn');
             // newBtn.addEventListener('click', () => {
