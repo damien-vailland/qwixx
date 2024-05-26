@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Qwixx</title>
+        <link rel="icon" href="logo.png" >
+        <meta name="author" content="Damien Vailland">
+        <meta name="keywords" content="">
+        <meta name="description" content="Qwixx counter online" />
+        <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+    </head>
+    <body>
+        <div id="rouge" class="couleur">
+            <div class="case appuyable">2</div>
+            <div class="case appuyable">3</div>
+            <div class="case appuyable">4</div>
+            <div class="case appuyable">5</div>
+            <div class="case appuyable">6</div>
+            <div class="case appuyable">7</div>
+            <div class="case appuyable">8</div>
+            <div class="case appuyable">9</div>
+            <div class="case appuyable">10</div>
+            <div class="case appuyable">11</div>
+            <div class="case appuyable">12</div>
+            <div class="case lock"></div>
+        </div>
+        <div id="jaune" class="couleur">
+            <div class="case appuyable">2</div>
+            <div class="case appuyable">3</div>
+            <div class="case appuyable">4</div>
+            <div class="case appuyable">5</div>
+            <div class="case appuyable">6</div>
+            <div class="case appuyable">7</div>
+            <div class="case appuyable">8</div>
+            <div class="case appuyable">9</div>
+            <div class="case appuyable">10</div>
+            <div class="case appuyable">11</div>
+            <div class="case appuyable">12</div>
+            <div class="case lock"></div>
+        </div>
+        <div id="vert" class="couleur">
+            <div class="case appuyable">12</div>
+            <div class="case appuyable">11</div>
+            <div class="case appuyable">10</div>
+            <div class="case appuyable">9</div>
+            <div class="case appuyable">8</div>
+            <div class="case appuyable">7</div>
+            <div class="case appuyable">6</div>
+            <div class="case appuyable">5</div>
+            <div class="case appuyable">4</div>
+            <div class="case appuyable">3</div>
+            <div class="case appuyable">2</div>
+            <div class="case lock"></div>
+        </div>
+        <div id="bleu" class="couleur">
+            <div class="case appuyable">12</div>
+            <div class="case appuyable">11</div>
+            <div class="case appuyable">10</div>
+            <div class="case appuyable">9</div>
+            <div class="case appuyable">8</div>
+            <div class="case appuyable">7</div>
+            <div class="case appuyable">6</div>
+            <div class="case appuyable">5</div>
+            <div class="case appuyable">4</div>
+            <div class="case appuyable">3</div>
+            <div class="case appuyable">2</div>
+            <div class="case lock"></div>
+        </div>
+        <div id="misc">
+            <div id="newBtn">Nouvelle partie</div>
+            <div id="malus">
+                <div id="passe" class="case appuyable"></div>
+                <div id="passe" class="case appuyable"></div>
+                <div id="passe" class="case appuyable"></div>
+                <div id="passe" class="case appuyable"></div>
+            </div>
+        </div>
+        <div id="compte">
+            <div id="c-rouge" class="case compteur">0</div>
+            +
+            <div id="c-jaune" class="case compteur">0</div>
+            +
+            <div id="c-vert" class="case compteur">0</div>
+            +
+            <div id="c-bleu" class="case compteur">0</div>
+            -
+            <div id="c-malus" class="case">0</div>
+            =
+            <div id="total" class="case">0</div>
+        </div>
+        <script>
+            window.addEventListener("load",function() {
+                setTimeout(function(){
+                    window.scrollTo(0, 1);
+                }, 0);
+            });
+
+            let cases = document.querySelectorAll('.case');
+            cases.forEach(caseElement => {
+                caseElement.addEventListener('click', () => {
+                    if (caseElement.classList.contains('appuyable')){
+                        if(caseElement.closest('#bleu')){score('bleu',caseElement);}
+                        if(caseElement.closest('#rouge')){score('rouge',caseElement);}
+                        if(caseElement.closest('#jaune')){score('jaune',caseElement);}
+                        if(caseElement.closest('#vert')){score('vert',caseElement);}
+                        if(caseElement.closest('#malus')){scoreMalus(caseElement);}
+                    }
+                    scoreTotal();
+                });
+            });
+            
+            function scoreMalus(caseElement){
+                caseElement.classList.toggle('active');
+                let compteMalus = document.querySelectorAll('#malus .case.active');
+                let caseTotalMalus = document.getElementById('c-malus');
+                caseTotalMalus.textContent = compteMalus.length*5;
+            }
+
+            function scoreTotal(){
+                let total = 0;
+                let compteurs = document.querySelectorAll('.compteur');
+                compteurs.forEach(compteur=> {
+                    total+=parseInt(compteur.textContent.trim());
+                });
+                let caseTotalMalus = document.getElementById('c-malus');
+                total -= parseInt(caseTotalMalus.textContent.trim());
+                let caseTotal = document.getElementById('total');
+                caseTotal.textContent = total;
+            }
+
+            function score(color,caseElement) {
+                let values = [];
+                let ActiveCases = document.querySelectorAll('#' + color + ' .case.active');
+                ActiveCases.forEach(activeCase => {
+                    values.push(activeCase.textContent.trim());
+                });
+
+                let allLessOrEqual = false;
+
+                if(caseElement.classList.contains('lock')){
+                    allLessOrEqual = true;
+                }
+                else {
+                    let caseValue = parseInt(caseElement.textContent.trim());
+                    if(color=='bleu' || color=='vert'){
+                        allLessOrEqual = values.every(val => parseInt(val) >= caseValue);
+                    } else {
+                        allLessOrEqual = values.every(val => parseInt(val) <= caseValue);
+                    }
+                }
+
+                if (allLessOrEqual) {
+                    caseElement.classList.toggle('active');
+                
+                    let values = [];
+                    let ActiveCases = document.querySelectorAll('#' + color + ' .case.active');
+                    ActiveCases.forEach(activeCase => {
+                        values.push(activeCase.textContent.trim());
+                    });
+                    
+                    let c = document.getElementById('c-'+ color);
+                    
+                    let score=0;
+                    for (let i = 0; i <= values.length; i++) {
+                        score += i;
+                    }
+                    c.textContent = score;
+                }
+
+                let lock = document.querySelector('#' + color + ' .lock');
+                if(values.length>=4){
+                    lock.classList.add('appuyable');
+                } else {
+                    lock.classList.remove('appuyable');
+                }
+            }
+            screen.orientation.lock('landscape');
+        </script>
+    </body>
+</html>
+
+<style>
+    :root {
+        --main-bg : #dedede;
+        --red : #D23636;
+        --yellow: #E8C20F;
+        --green :#178D17;
+        --blue : #3838B7;
+        --red-2:#F4CDCD;
+        --yellow-2:#F9F0C3;
+        --green-2:#C5E3C5;
+        --blue-2:#CDCDED;
+        --black:#646464;
+    }
+    
+    body {
+        background-color:var(--main-bg);
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color:var(--black);
+        height: 100vh;
+    }
+
+    .couleur {
+        display: flex;
+        width: 80vw;
+        height: max-content;
+        border-radius: 8px;
+        align-items: center;
+        justify-content: space-around;
+        text-align: center;
+        padding: 1.8vh;
+        gap: 1.8vh;
+    }
+
+    #rouge {background-color: var(--red);}
+    #jaune {background-color: var(--yellow);}
+    #vert {background-color: var(--green);}
+    #bleu {background-color: var(--blue);}
+
+    .case, .lock {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        font-weight: 700;
+        font-size: 22px;
+        transition: background-color 0.05s ease-out, color 0.05s ease-out;
+        height: 12vh;
+        width:12vh;
+    }
+
+    .case.lock {
+        height: 10vh;
+        width:10vh;
+        border-radius: 500px;
+        margin: 2px 8px;
+    }
+    
+    #rouge .case {
+        background-color: var(--red-2) ;
+        color:var(--red);
+    }
+
+    #jaune .case {
+        background-color: var(--yellow-2) ;
+        color:var(--yellow);
+    }
+    
+    #vert .case {
+        background-color: var(--green-2) ;
+        color:var(--green);
+    }
+    
+    #bleu .case {
+        background-color: var(--blue-2) ;
+        color:var(--blue);
+    }
+
+    #rouge .case.active {
+        background-color: var(--red) ;
+        color:var(--red-2);
+    }
+    #jaune .case.active {
+        background-color: var(--yellow) ;
+        color:var(--yellow-2);
+    }
+    #vert .case.active {
+        background-color: var(--green) ;
+        color:var(--green-2);
+    }
+    #bleu .case.active{
+        background-color: var(--blue) ;
+        color:var(--blue-2);
+    }
+
+    #compte .case {
+        background-color: white;
+        width: 20vw;
+        border-width: 4px;
+    }
+
+    #c-rouge.case {color:var(--red)}
+    #c-jaune.case {color:var(--yellow)}
+    #c-vert.case {color:var(--green)}
+    #c-bleu.case {color:var(--blue)}
+
+    #compte {
+        display: flex;
+        width: 80vw;
+        height: max-content;
+        align-items: center;
+        justify-content: space-around;
+        text-align: center;
+        padding-bottom: 1.8vh;
+        gap: 1vw;
+        font-weight: 800;
+    }
+
+    #misc   {
+        display: flex;
+        width: 80vw;
+        height: max-content;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+        padding: 1.8vh;
+        gap: 1.8vh;
+        font-weight: 800;
+    }
+    
+    #malus {
+        width: max-content;
+        display: flex;
+        justify-content: space-around;
+        align-items: right;
+        gap: 1.8vh;
+    }
+
+    #newBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding:0 1.8vh;
+        gap: 1.8vh;
+        width: max-content;
+        background-color: white;
+        border-width: 4px;
+        height: 14vh;
+        border-radius: 5px;
+    }
+
+    #malus .case {
+        background-color: white;
+        width: 5vw;
+        border-width: 4px;
+        transition: background-color 0.05s ease-out;
+    }
+
+    #malus .case.active {
+        background-color: var(--black);
+    }
+</style>
