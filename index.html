@@ -15,86 +15,90 @@
         <meta content="width=device-width, initial-scale=1" name="viewport" />
     </head>
     <body>
-        <div id="rouge" class="couleur">
-            <div class="case appuyable">2</div>
-            <div class="case appuyable">3</div>
-            <div class="case appuyable">4</div>
-            <div class="case appuyable">5</div>
-            <div class="case appuyable">6</div>
-            <div class="case appuyable">7</div>
-            <div class="case appuyable">8</div>
-            <div class="case appuyable">9</div>
-            <div class="case appuyable">10</div>
-            <div class="case appuyable">11</div>
-            <div class="case appuyable">12</div>
-            <div class="case lock"></div>
-        </div>
-        <div id="jaune" class="couleur">
-            <div class="case appuyable">2</div>
-            <div class="case appuyable">3</div>
-            <div class="case appuyable">4</div>
-            <div class="case appuyable">5</div>
-            <div class="case appuyable">6</div>
-            <div class="case appuyable">7</div>
-            <div class="case appuyable">8</div>
-            <div class="case appuyable">9</div>
-            <div class="case appuyable">10</div>
-            <div class="case appuyable">11</div>
-            <div class="case appuyable">12</div>
-            <div class="case lock"></div>
-        </div>
-        <div id="vert" class="couleur">
-            <div class="case appuyable">12</div>
-            <div class="case appuyable">11</div>
-            <div class="case appuyable">10</div>
-            <div class="case appuyable">9</div>
-            <div class="case appuyable">8</div>
-            <div class="case appuyable">7</div>
-            <div class="case appuyable">6</div>
-            <div class="case appuyable">5</div>
-            <div class="case appuyable">4</div>
-            <div class="case appuyable">3</div>
-            <div class="case appuyable">2</div>
-            <div class="case lock"></div>
-        </div>
-        <div id="bleu" class="couleur">
-            <div class="case appuyable">12</div>
-            <div class="case appuyable">11</div>
-            <div class="case appuyable">10</div>
-            <div class="case appuyable">9</div>
-            <div class="case appuyable">8</div>
-            <div class="case appuyable">7</div>
-            <div class="case appuyable">6</div>
-            <div class="case appuyable">5</div>
-            <div class="case appuyable">4</div>
-            <div class="case appuyable">3</div>
-            <div class="case appuyable">2</div>
-            <div class="case lock"></div>
-        </div>
-        <div id="misc">
-            <div id="compte">
-                <div id="c-rouge" class="case compteur">0</div>
-                +
-                <div id="c-jaune" class="case compteur">0</div>
-                +
-                <div id="c-vert" class="case compteur">0</div>
-                +
-                <div id="c-bleu" class="case compteur">0</div>
-                -
-                <div id="c-malus" class="case">0</div>
-                =
-                <div id="total" class="case">0</div>
+        <main>
+            <div id="rouge" class="couleur">
+                <div class="case appuyable">2</div>
+                <div class="case appuyable">3</div>
+                <div class="case appuyable">4</div>
+                <div class="case appuyable">5</div>
+                <div class="case appuyable">6</div>
+                <div class="case appuyable">7</div>
+                <div class="case appuyable">8</div>
+                <div class="case appuyable">9</div>
+                <div class="case appuyable">10</div>
+                <div class="case appuyable">11</div>
+                <div class="case appuyable">12</div>
+                <div class="case lock"></div>
             </div>
-            <div id="malus">
-                <div id="passe" class="case appuyable"></div>
-                <div id="passe" class="case appuyable"></div>
-                <div id="passe" class="case appuyable"></div>
-                <div id="passe" class="case appuyable"></div>
+            <div id="jaune" class="couleur">
+                <div class="case appuyable">2</div>
+                <div class="case appuyable">3</div>
+                <div class="case appuyable">4</div>
+                <div class="case appuyable">5</div>
+                <div class="case appuyable">6</div>
+                <div class="case appuyable">7</div>
+                <div class="case appuyable">8</div>
+                <div class="case appuyable">9</div>
+                <div class="case appuyable">10</div>
+                <div class="case appuyable">11</div>
+                <div class="case appuyable">12</div>
+                <div class="case lock"></div>
             </div>
-        </div>
-        <video autoplay loop controls="false">
-            <source src="blank.mp4" type="video/mp4">
-        </video>
+            <div id="vert" class="couleur">
+                <div class="case appuyable">12</div>
+                <div class="case appuyable">11</div>
+                <div class="case appuyable">10</div>
+                <div class="case appuyable">9</div>
+                <div class="case appuyable">8</div>
+                <div class="case appuyable">7</div>
+                <div class="case appuyable">6</div>
+                <div class="case appuyable">5</div>
+                <div class="case appuyable">4</div>
+                <div class="case appuyable">3</div>
+                <div class="case appuyable">2</div>
+                <div class="case lock"></div>
+            </div>
+            <div id="bleu" class="couleur">
+                <div class="case appuyable">12</div>
+                <div class="case appuyable">11</div>
+                <div class="case appuyable">10</div>
+                <div class="case appuyable">9</div>
+                <div class="case appuyable">8</div>
+                <div class="case appuyable">7</div>
+                <div class="case appuyable">6</div>
+                <div class="case appuyable">5</div>
+                <div class="case appuyable">4</div>
+                <div class="case appuyable">3</div>
+                <div class="case appuyable">2</div>
+                <div class="case lock"></div>
+            </div>
+            <div id="misc">
+                <div id="compte">
+                    <div id="c-rouge" class="case compteur">0</div>
+                    +
+                    <div id="c-jaune" class="case compteur">0</div>
+                    +
+                    <div id="c-vert" class="case compteur">0</div>
+                    +
+                    <div id="c-bleu" class="case compteur">0</div>
+                    -
+                    <div id="c-malus" class="case">0</div>
+                    =
+                    <div id="total" class="case">0</div>
+                </div>
+                <div id="malus">
+                    <div id="passe" class="case appuyable"></div>
+                    <div id="passe" class="case appuyable"></div>
+                    <div id="passe" class="case appuyable"></div>
+                    <div id="passe" class="case appuyable"></div>
+                </div>
+            </div>
+        </main>
+        <!-- <footer>
+            <video autoplay loop controls="false">
+                <source src="blank.mp4" type="video/mp4">
+            </video>
+        </footer> -->
         <script>
             window.addEventListener("load",function() {
                 setTimeout(function(){
@@ -207,18 +211,6 @@
         font-family: 'Poppins', sans-serif;
     }
 
-    @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
-        html {
-            transform-origin: left top;
-            width: 100vh;
-            height: 100vw;
-            overflow-x: hidden;
-            position: absolute;
-            top: 100%;
-            left: 0;
-        }
-    }
-
     :root {
         --main-bg : #dedede;
         --red : #D23636;
@@ -235,25 +227,30 @@
     body {
         background-color:var(--main-bg);
         margin: 0;
-        margin-top:200px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        /* justify-content: center; */
+        justify-content: center;
         color:var(--black);
-        height: 100vh;
+        height: 100lvh;
+        width: 100lvw;
+    }
+
+    main {
+        transform-origin: 50% 50%;
+        transform: rotateZ(90deg) scale(0.9);
     }
 
     .couleur {
         display: flex;
-        width: 90vw;
+        width: 90vh;
         height: max-content;
         border-radius: 8px;
         align-items: center;
         justify-content: space-around;
         text-align: center;
-        padding: 1vw;
-        gap: 0.8vw;
+        padding: 1vh;
+        gap: 0.8vh;
     }
 
     #rouge {background-color: var(--red);}
@@ -270,13 +267,13 @@
         font-weight: 700;
         font-size: 22px;
         transition: background-color 0.05s ease-out, color 0.05s ease-out;
-        height: 7vw;
-        width:7vw;
+        height: 7vh;
+        width:7vh;
     }
 
     .case.lock {
-        height: 6vw;
-        width:6vw;
+        height: 6vh;
+        width:6vh;
         border-radius: 500px;
         margin: 2px 8px;
     }
@@ -320,7 +317,7 @@
 
     #compte .case {
         background-color: white;
-        width: 20vw;
+        width: 20vh;
         border-width: 4px;
     }
 
@@ -331,24 +328,24 @@
 
     #compte {
         display: flex;
-        width: 60vw;
+        width: 60vh;
         height: max-content;
         align-items: center;
         justify-content: space-around;
         text-align: center;
         font-weight: 800;
-        gap:1vw;
+        gap:1vh;
     }
 
     #misc   {
         display: flex;
-        width: 90vw;
+        width: 90vh;
         height: max-content;
         align-items: center;
         justify-content: space-between;
         text-align: center;
-        padding: 1vw;
-        gap: 0.8vw;
+        padding: 1vh;
+        gap: 0.8vh;
         font-weight: 800;
     }
     
@@ -357,24 +354,24 @@
         display: flex;
         justify-content: space-around;
         align-items: right;
-        gap: 0.8vw;
+        gap: 0.8vh;
     }
 
     #newBtn {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0 1.8vw;
-        gap: 0.8vw;
+        padding: 0 1.8vh;
+        gap: 0.8vh;
         width: max-content;
         background-color: white;
-        height: 7vw;
+        height: 7vh;
         border-radius: 5px;
     }
 
     #malus .case {
         background-color: white;
-        width: 5vw;
+        width: 5vh;
         transition: background-color 0.05s ease-out;
     }
 
